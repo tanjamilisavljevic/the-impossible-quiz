@@ -1,23 +1,23 @@
 import React, {useState} from 'react';
 
-function Questions(props) {
+function Questions() {
 
     const questions = [
         {
             question: 'What’s Marge Simpson’s maiden name?',
-            answer: 'Bouvier' || 'bouvier',
+            answer: 'Bouvier',
         },
         {
             question: 'Name Mr. Burns’ teddy bear.',
-            answer: 'Bobo' || 'bobo',
+            answer: 'Bobo',
         },
         {
             question: 'Who invented the "Flaming Moe" in The Simpsons?',
-            answer: 'Homer' || 'homer' || 'Homer Simpson' || 'homer simpson',
+            answer: 'Homer',
         },
         {
             question: 'What was the name of the person who shot Mr. Burns?',
-            answer: 'Maggie' || 'maggie'
+            answer: 'Maggie'
         }
     ];
 
@@ -26,12 +26,19 @@ function Questions(props) {
     const nextQuestion = currentQuestion + 1;
 
     const handleClick = () => {
+        const userAnswer = document.getElementById('answer').value;
+        const correctAnswer = questions[currentQuestion].answer;
 
-        if (nextQuestion < questions.length) {
+        if (nextQuestion < questions.length && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                alert('correct');
                 setCurrentQuestion(nextQuestion);
+                document.getElementById('answer').value = '';
         }
-        else{
+        else if (!(nextQuestion < questions.length)){
             alert('you win')
+        }
+        else {
+            alert('try again')
         }
     };
 
