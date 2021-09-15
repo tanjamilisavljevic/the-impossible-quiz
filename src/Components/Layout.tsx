@@ -1,7 +1,7 @@
 import React from 'react';
 import Questions from "./Questions";
 
-function Layout(props) {
+function Layout() {
     return (
         <div>
             <h1> The IMPOSSIBLE Quiz</h1>

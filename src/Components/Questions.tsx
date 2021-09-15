@@ -26,13 +26,13 @@ function Questions() {
     const nextQuestion = currentQuestion + 1;
 
     const handleClick = () => {
-        const userAnswer = document.getElementById('answer').value;
-        const correctAnswer = questions[currentQuestion].answer;
+        let userAnswer = document.getElementById('answer') as HTMLInputElement;
+        const correctAnswer :string = questions[currentQuestion].answer;
 
-        if (nextQuestion < questions.length && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        if (nextQuestion < questions.length && userAnswer.value.toLowerCase() === correctAnswer.toLowerCase()) {
                 alert('correct');
                 setCurrentQuestion(nextQuestion);
-                document.getElementById('answer').value = '';
+                userAnswer.value = '';
         }
         else if (!(nextQuestion < questions.length)){
             alert('you win')
