@@ -18,6 +18,18 @@ function Questions() {
         {
             question: 'What was the name of the person who shot Mr. Burns?',
             answer: 'Maggie'
+        },
+        {
+            question: 'Who did Marge go with to her high school’s senior prom?',
+            answer: 'Artie'
+        },
+        {
+            question: 'What was the name of the video game Bart attempted to steal from Try-N-Save?',
+            answer: 'Bonestorm'
+        },
+        {
+            question: 'What musician did Marge have a crush on in high school?',
+            answer: 'Ringo Starr'
         }
     ];
 
