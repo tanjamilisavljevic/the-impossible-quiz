@@ -5,6 +5,7 @@ function Layout(props) {
     return (
         <div>
             <h1> The IMPOSSIBLE Quiz</h1>
+            <h5> The Simpsons Edition</h5>
             <Questions/>
         </div>
     );
