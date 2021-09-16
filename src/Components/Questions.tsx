@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 function Questions() {
 
@@ -32,7 +32,7 @@ function Questions() {
             answer: 'Ringo Starr'
         }
     ];
-    // Question counter code
+    // Question counter code; doesn't need typehinting bc the initialState is a number and the type is inferred
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const nextQuestion = currentQuestion + 1;
 
@@ -40,8 +40,8 @@ function Questions() {
     const [showText, setShowText] = useState(false);
 
     // Countdown code
-    const [timer, setTimer] = React.useState(10);
-    const time: any = React.useRef(null);
+    const [timer, setTimer] = useState(10);
+    const time : any = useRef(null);
 
     //Code to change timer color
     const [color,setColor]=useState('rgba(255, 128, 254, 1)');
@@ -50,14 +50,14 @@ function Questions() {
     const clear = () => {
         window.clearInterval(time.current)
     }
-    React.useEffect(() => {
+    useEffect(() => {
         time.current = window.setInterval(() => {
             setTimer((time) => time - 1)
         }, 1000)
         return () => clear();
     }, [])
 
-    React.useEffect((): any => {
+    useEffect(() => {
         if (timer === 0) {
             clear()
             alert('you lose')
@@ -65,7 +65,7 @@ function Questions() {
         }
     }, [timer])
 
-    React.useEffect((): any => {
+    useEffect(() => {
         if (timer < 4) {
             setColor("rgba(246,81,50)");
         }
