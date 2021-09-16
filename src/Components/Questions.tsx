@@ -84,6 +84,7 @@ function Questions() {
         window.location.reload();
     }
 
+
     const Text = () => <button onClick={restartGame}>Play again</button>;
 
     return (
@@ -92,8 +93,8 @@ function Questions() {
             <input type='text' className='answer' id='answer'/>
             <br/>
             <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
-            <div className="timer">
-                <div>Time left : {timer} </div>
+            <div className='timerWrapper'>
+                <div className='timer'>Time left : {timer} </div>
             </div>
             {showText ? <Text /> : null}
         </div>
