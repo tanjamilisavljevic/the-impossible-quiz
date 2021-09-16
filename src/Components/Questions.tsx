@@ -41,7 +41,10 @@ function Questions() {
 
     // Countdown code
     const [timer, setTimer] = React.useState(10);
-    const time :any = React.useRef(null);
+    const time: any = React.useRef(null);
+
+    const [color,setColor]=useState('rgba(255, 128, 254, 0.7)');
+    const [textColor,setTextColor]=useState('black');
 
 
     const clear = () => {
@@ -54,11 +57,18 @@ function Questions() {
         return () => clear();
     }, [])
 
-    React.useEffect(() :any => {
+    React.useEffect((): any => {
         if (timer === 0) {
             clear()
             alert('you lose')
             setShowText(true)
+        }
+    }, [timer])
+
+    React.useEffect((): any => {
+        if (timer < 4) {
+            setColor("rgba(255,0,0,0.9)");
+            setTextColor('white');
         }
     }, [timer])
 
@@ -94,9 +104,9 @@ function Questions() {
             <br/>
             <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
             <div className='timerWrapper'>
-                <div className='timer'>Time left : {timer} </div>
+                <div className='timer'style={{background:color,color:textColor}}>Time left : {timer} </div>
             </div>
-            {showText ? <Text /> : null}
+            {showText ? <Text/> : null}
         </div>
     );
 }
