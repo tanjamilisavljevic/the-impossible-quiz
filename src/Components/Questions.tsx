@@ -32,21 +32,23 @@ function Questions() {
             answer: 'Ringo Starr'
         }
     ];
-
+    // Question counter code
     const [currentQuestion, setCurrentQuestion] = useState(0);
-
     const nextQuestion = currentQuestion + 1;
+
+    //Showing button after fail code
+    const [showText, setShowText] = useState(false);
 
     // Countdown code
     const [timer, setTimer] = React.useState(10);
-    const id :any = React.useRef(null);
+    const time :any = React.useRef(null);
 
 
     const clear = () => {
-        window.clearInterval(id.current)
+        window.clearInterval(time.current)
     }
     React.useEffect(() => {
-        id.current = window.setInterval(() => {
+        time.current = window.setInterval(() => {
             setTimer((time) => time - 1)
         }, 1000)
         return () => clear();
@@ -56,6 +58,7 @@ function Questions() {
         if (timer === 0) {
             clear()
             alert('you lose')
+            setShowText(true)
         }
     }, [timer])
 
@@ -77,6 +80,8 @@ function Questions() {
         }
     };
 
+    const Text = () => <button>Play again</button>;
+
     return (
         <div>
             <p>{questions[currentQuestion].question}</p>
@@ -84,10 +89,9 @@ function Questions() {
             <br/>
             <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
             <div className="timer">
-
                 <div>Time left : {timer} </div>
-
             </div>
+            {showText ? <Text /> : null}
         </div>
     );
 }
