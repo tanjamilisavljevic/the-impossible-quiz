@@ -43,8 +43,8 @@ function Questions() {
     const [timer, setTimer] = React.useState(10);
     const time: any = React.useRef(null);
 
-    const [color,setColor]=useState('rgba(255, 128, 254, 0.7)');
-    const [textColor,setTextColor]=useState('black');
+    //Code to change timer color
+    const [color,setColor]=useState('rgba(255, 128, 254, 1)');
 
 
     const clear = () => {
@@ -67,8 +67,7 @@ function Questions() {
 
     React.useEffect((): any => {
         if (timer < 4) {
-            setColor("rgba(255,0,0,0.9)");
-            setTextColor('white');
+            setColor("rgba(246,81,50)");
         }
     }, [timer])
 
@@ -104,7 +103,7 @@ function Questions() {
             <br/>
             <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
             <div className='timerWrapper'>
-                <div className='timer'style={{background:color,color:textColor}}>Time left : {timer} </div>
+                <div className='timer'style={{background:color}}>Time left : {timer} </div>
             </div>
             {showText ? <Text/> : null}
         </div>

@@ -38,14 +38,14 @@ button, .submit {
     font-family: 'Lexend Deca', sans-serif;
 }
 .submit:hover{
-    background-color: #fcdb00;
+    background-color: #70D1FE;
 }
 button:hover{
-    background-color: #fcdb00;
+    background-color: #70D1FE;
 }
 
 .timer{
-    background-color: rgba(255, 128, 254, 0.7);
+    background-color: #FF80FEFF;
     padding: 0.9rem;
     border-radius: 25px;
     margin: 1rem;
