@@ -80,7 +80,11 @@ function Questions() {
         }
     };
 
-    const Text = () => <button>Play again</button>;
+    const restartGame = () => {
+        window.location.reload();
+    }
+
+    const Text = () => <button onClick={restartGame}>Play again</button>;
 
     return (
         <div>
