@@ -37,19 +37,42 @@ function Questions() {
 
     const nextQuestion = currentQuestion + 1;
 
+    // Countdown code
+    const [timer, setTimer] = React.useState(10);
+    const id :any = React.useRef(null);
+
+
+    const clear = () => {
+        window.clearInterval(id.current)
+    }
+    React.useEffect(() => {
+        id.current = window.setInterval(() => {
+            setTimer((time) => time - 1)
+        }, 1000)
+        return () => clear();
+    }, [])
+
+    React.useEffect(() :any => {
+        if (timer === 0) {
+            clear()
+            alert('you lose')
+        }
+    }, [timer])
+
+
     const handleClick = () => {
         let userAnswer = document.getElementById('answer') as HTMLInputElement;
-        const correctAnswer :string = questions[currentQuestion].answer;
+        const correctAnswer: string = questions[currentQuestion].answer;
 
         if (nextQuestion < questions.length && userAnswer.value.toLowerCase() === correctAnswer.toLowerCase()) {
-                alert('correct');
-                setCurrentQuestion(nextQuestion);
-                userAnswer.value = '';
-        }
-        else if (!(nextQuestion < questions.length)){
+            alert('correct');
+            setCurrentQuestion(nextQuestion);
+            userAnswer.value = '';
+            setTimer(10)
+
+        } else if (!(nextQuestion < questions.length)) {
             alert('you win')
-        }
-        else {
+        } else {
             alert('try again')
         }
     };
@@ -60,6 +83,11 @@ function Questions() {
             <input type='text' className='answer' id='answer'/>
             <br/>
             <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
+            <div className="timer">
+
+                <div>Time left : {timer} </div>
+
+            </div>
         </div>
     );
 }
