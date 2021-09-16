@@ -87,7 +87,7 @@ function Questions() {
     const Text = () => <button onClick={restartGame}>Play again</button>;
 
     return (
-        <div>
+        <div className='content'>
             <p>{questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>
