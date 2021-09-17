@@ -122,6 +122,25 @@ button:hover {
     letter-spacing: 2px;
 }
 
+.winningMessage{
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: black;
+    letter-spacing: 2px;
+    animation: color-correct 2s infinite, zoom-in-zoom-out 1s ease infinite;
+}
+
+@keyframes zoom-in-zoom-out {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.5, 1.5);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 @media only screen and (max-width: 545px) {
     .title {
         font-size: 1.5rem;

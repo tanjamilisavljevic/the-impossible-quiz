@@ -46,7 +46,6 @@ function Questions() {
     const [showCheckAnswer, setShowCheckAnswer] = useState(true);
 
 
-
     // Countdown code
     const [timer, setTimer] = useState(10);
     const time: any = useRef(null);
@@ -91,10 +90,10 @@ function Questions() {
             setShowTryAgain(false);
             setShowYouWin(false);
             setShowYouLose(false);
-
             setShowCorrect(true);
-            window.setTimeout(()=>{setShowCorrect(false)}, 2000)
-
+            window.setTimeout(() => {
+                setShowCorrect(false)
+            }, 2000)
             setCurrentQuestion(nextQuestion);
             userAnswer.value = '';
             setTimer(10)
@@ -106,6 +105,7 @@ function Questions() {
             setShowYouWin(true);
             window.clearInterval(time.current);
             setShowRefreshButton(true);
+            setShowCheckAnswer(false);
         } else {
             setShowYouWin(false);
             setShowYouLose(false);
@@ -123,17 +123,16 @@ function Questions() {
     const Correct = () => <div className='correctMessage'> Good job! On to the next one! </div>;
     const TryAgain = () => <div className='tryAgainMessage'> Try again? </div>;
     const YouLose = () => <div>
-        <div className='losingMessage'> Sorry friend, time's up! :-( Try again though? </div>
+        <div className='losingMessage'> Sorry friend, time's up! :-( Try again though?</div>
         <button onClick={restartGame}>Refresh</button>
     </div>;
     const CheckAnswer = () =>
         <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>;
 
 
-
     return (
         <div onKeyDown={e => e.key === 'Enter' && handleClick()}>
-            <p> {currentQuestion + 1}/{questions.length}:  {questions[currentQuestion].question}</p>
+            <p> {currentQuestion + 1}/{questions.length}: {questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>
             {showCheckAnswer ? <CheckAnswer/> : null}
