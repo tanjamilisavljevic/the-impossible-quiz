@@ -81,7 +81,7 @@ function Questions() {
             setCurrentQuestion(nextQuestion);
             userAnswer.value = '';
             setTimer(10)
-
+            setColor('rgba(255, 128, 254, 1)')
         } else if (!(nextQuestion < questions.length)) {
             alert('you win')
         } else {
