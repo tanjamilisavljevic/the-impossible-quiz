@@ -104,6 +104,7 @@ function Questions() {
             setShowYouLose(false);
             setShowCorrect(false);
             setShowYouWin(true)
+
         } else {
             setShowYouWin(false);
             setShowYouLose(false);
@@ -130,7 +131,7 @@ function Questions() {
 
 
     return (
-        <div className='content' onKeyDown={handleClick}>
+        <div  onKeyDown={handleClick}>
             <p> {currentQuestion + 1}/{questions.length}:  {questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>
