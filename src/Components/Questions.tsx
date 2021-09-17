@@ -131,12 +131,11 @@ function Questions() {
 
 
     return (
-        <div>
+        <div onKeyDown={e => e.key === 'Enter' && handleClick()}>
             <p> {currentQuestion + 1}/{questions.length}:  {questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>
             {showCheckAnswer ? <CheckAnswer/> : null}
-            {/*<input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>*/}
             <div className='timerWrapper'>
                 <div className='timer' style={{background: color}}>Time left : {timer} </div>
             </div>
