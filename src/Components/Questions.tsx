@@ -131,7 +131,7 @@ function Questions() {
 
 
     return (
-        <div  onKeyDown={handleClick}>
+        <div>
             <p> {currentQuestion + 1}/{questions.length}:  {questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>

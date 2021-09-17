@@ -1,4 +1,21 @@
-.App {
+.startButton{
+    cursor: pointer;
+    text-decoration: none;
+    color: #ff80fe;
+    font-family: 'Lexend Deca', sans-serif;
+    padding: 1rem;
+    border-radius: 16px;
+    font-size: 2rem;
+    background-color: rgba(360, 360, 360, 0.8);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
+.startButton:hover{
+    color: #aa57a9;
+}
+
+.App{
     text-align: center;
     background-color: rgba(360, 360, 360, 0.8);
     border-radius: 25px;
