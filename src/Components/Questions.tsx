@@ -36,15 +36,20 @@ function Questions() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const nextQuestion = currentQuestion + 1;
 
-    //Showing button after fail code
-    const [showText, setShowText] = useState(false);
+    //Toggle showing the button and messages
+    const [showRefreshButton, setShowRefreshButton] = useState(false);
+    const [showYouWin, setShowYouWin] = useState(false);
+    const [showCorrect, setShowCorrect] = useState(false);
+    const [showTryAgain, setShowTryAgain] = useState(false);
+    const [showYouLose, setShowYouLose] = useState(false);
+
 
     // Countdown code
     const [timer, setTimer] = useState(10);
-    const time : any = useRef(null);
+    const time: any = useRef(null);
 
     //Code to change timer color
-    const [color,setColor]=useState('rgba(255, 128, 254, 1)');
+    const [color, setColor] = useState('rgba(255, 128, 254, 1)');
 
 
     const clear = () => {
@@ -60,8 +65,11 @@ function Questions() {
     useEffect(() => {
         if (timer === 0) {
             clear()
-            alert('you lose')
-            setShowText(true)
+            setShowTryAgain(false);
+            setShowYouWin(false);
+            setShowCorrect(false);
+            setShowYouLose(true)
+            setShowRefreshButton(true)
         }
     }, [timer])
 
@@ -77,15 +85,24 @@ function Questions() {
         const correctAnswer: string = questions[currentQuestion].answer;
 
         if (nextQuestion < questions.length && userAnswer.value.toLowerCase() === correctAnswer.toLowerCase()) {
-            alert('correct');
+            setShowTryAgain(false);
+            setShowYouWin(false);
+            setShowYouLose(false);
+            setShowCorrect(true);
             setCurrentQuestion(nextQuestion);
             userAnswer.value = '';
             setTimer(10)
             setColor('rgba(255, 128, 254, 1)')
         } else if (!(nextQuestion < questions.length)) {
-            alert('you win')
+            setShowTryAgain(false);
+            setShowYouLose(false);
+            setShowCorrect(false);
+            setShowYouWin(true)
         } else {
-            alert('try again')
+            setShowYouWin(false);
+            setShowYouLose(false);
+            setShowCorrect(false);
+            setShowTryAgain(true)
         }
     };
 
@@ -93,8 +110,15 @@ function Questions() {
         window.location.reload();
     }
 
+    const RefreshButton = () => <button onClick={restartGame}>Refresh</button>;
+    const YouWin = () => <div className='winningMessage'> You win! </div>
+    const Correct = () => <div className='correctMessage'> Good job! On to the next one! </div>
+    const TryAgain = () => <div className='tryAgainMessage'> Try again? </div>
+    const YouLose = () => <div>
+        <div className='losingMessage'> Sorry friend, time's up!</div>
+        <button onClick={restartGame}>Refresh</button>
+    </div>
 
-    const Text = () => <button onClick={restartGame}>Play again</button>;
 
     return (
         <div className='content'>
@@ -103,9 +127,13 @@ function Questions() {
             <br/>
             <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
             <div className='timerWrapper'>
-                <div className='timer'style={{background:color}}>Time left : {timer} </div>
+                <div className='timer' style={{background: color}}>Time left : {timer} </div>
             </div>
-            {showText ? <Text/> : null}
+            {showRefreshButton ? <RefreshButton/> : null}
+            {showYouWin ? <YouWin/> : null}
+            {showCorrect ? <Correct/> : null}
+            {showTryAgain ? <TryAgain/> : null}
+            {showYouLose ? <YouLose/> : null}
         </div>
     );
 }
