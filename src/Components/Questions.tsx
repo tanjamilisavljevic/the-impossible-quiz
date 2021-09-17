@@ -90,7 +90,10 @@ function Questions() {
             setShowTryAgain(false);
             setShowYouWin(false);
             setShowYouLose(false);
+
             setShowCorrect(true);
+            window.setTimeout(()=>{setShowCorrect(false)}, 2000)
+
             setCurrentQuestion(nextQuestion);
             userAnswer.value = '';
             setTimer(10)

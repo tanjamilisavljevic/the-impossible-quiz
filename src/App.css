@@ -15,7 +15,7 @@ body {
     font-size: 1.2rem;
 }
 
-.title{
+.title {
     font-family: 'Concert One', cursive;
     font-size: 3rem;
     color: #ff80fe;
@@ -24,7 +24,7 @@ body {
     letter-spacing: 5px;
 }
 
-.answer{
+.answer {
     width: 15%;
     height: 3vh;
     border-radius: 25px;
@@ -38,14 +38,16 @@ button, .submit {
     margin: 1rem;
     font-family: 'Lexend Deca', sans-serif;
 }
-.submit:hover{
-    background-color: #81c0f6;
-}
-button:hover{
+
+.submit:hover {
     background-color: #81c0f6;
 }
 
-.timer{
+button:hover {
+    background-color: #81c0f6;
+}
+
+.timer {
     background-color: #FF80FEFF;
     padding: 0.9rem;
     border-radius: 25px;
@@ -53,57 +55,75 @@ button:hover{
     border: solid 1px black;
 }
 
-.timerWrapper{
+.timerWrapper {
     display: flex;
     justify-content: center;
 }
 
-.tryAgainMessage{
+.tryAgainMessage {
     animation: color-change 1s infinite;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    letter-spacing: 5px;
 }
+
 @keyframes color-change {
-    0% { color: black; }
-    50% { color: rgba(246,81,50) }
-    100% { color: black; }
-}
-
-.correctMessage{
-    animation-name: disappear;
-    animation-duration: 2000ms;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-}
-
-@keyframes disappear{
-    0%{
-        opacity: 1;
+    0% {
+        color: black;
     }
-    100%{
-        display: none;
-        opacity: 0;
+    50% {
+        color: rgba(246, 81, 50, 1)
+    }
+    100% {
+        color: black;
     }
 }
 
-.losingMessage{
+.correctMessage {
+    animation: color-correct 1s infinite;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    letter-spacing: 5px;
+}
+
+@keyframes color-correct {
+    0% {
+        color: black;
+    }
+    50% {
+        color: rgb(0, 215, 60)
+    }
+    100% {
+        color: black;
+    }
+}
+
+.losingMessage {
     animation: color-change 3s infinite;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    letter-spacing: 5px;
 }
 
 @media only screen and (max-width: 545px) {
     .title {
         font-size: 1.5rem;
     }
+
     body {
         background-image: url("./simpsons.png");
         background-size: auto;
         background-repeat: no-repeat;
         font-size: 0.8rem;
     }
+
     button, .submit {
         padding: 0.3rem;
         margin: 0.8rem;
         font-size: 0.6rem;
     }
-    .answer{
+
+    .answer {
         width: 30vw;
     }
 }
