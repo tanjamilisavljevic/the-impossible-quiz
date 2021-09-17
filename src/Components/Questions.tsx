@@ -42,6 +42,8 @@ function Questions() {
     const [showCorrect, setShowCorrect] = useState(false);
     const [showTryAgain, setShowTryAgain] = useState(false);
     const [showYouLose, setShowYouLose] = useState(false);
+    const [showCheckAnswer, setShowCheckAnswer] = useState(true);
+
 
 
     // Countdown code
@@ -69,7 +71,7 @@ function Questions() {
             setShowYouWin(false);
             setShowCorrect(false);
             setShowYouLose(true)
-            setShowRefreshButton(true)
+            setShowCheckAnswer(false);
         }
     }, [timer])
 
@@ -111,21 +113,25 @@ function Questions() {
     }
 
     const RefreshButton = () => <button onClick={restartGame}>Refresh</button>;
-    const YouWin = () => <div className='winningMessage'> You win! </div>
-    const Correct = () => <div className='correctMessage'> Good job! On to the next one! </div>
-    const TryAgain = () => <div className='tryAgainMessage'> Try again? </div>
+    const YouWin = () => <div className='winningMessage'> You win! </div>;
+    const Correct = () => <div className='correctMessage'> Good job! On to the next one! </div>;
+    const TryAgain = () => <div className='tryAgainMessage'> Try again? </div>;
     const YouLose = () => <div>
-        <div className='losingMessage'> Sorry friend, time's up!</div>
+        <div className='losingMessage'> Sorry friend, time's up! :-( Try again though? </div>
         <button onClick={restartGame}>Refresh</button>
-    </div>
+    </div>;
+    const CheckAnswer = () =>
+        <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>;
+
 
 
     return (
         <div className='content'>
-            <p>{questions[currentQuestion].question}</p>
+            <p> {currentQuestion + 1}/{questions.length}:  {questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>
-            <input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>
+            {showCheckAnswer ? <CheckAnswer/> : null}
+            {/*<input type='submit' className='submit' id='submit' value='Check my answer' onClick={handleClick}/>*/}
             <div className='timerWrapper'>
                 <div className='timer' style={{background: color}}>Time left : {timer} </div>
             </div>

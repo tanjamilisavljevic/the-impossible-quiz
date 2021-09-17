@@ -68,10 +68,10 @@ button:hover{
 }
 
 .correctMessage{
-    animation: disappear 2s;
-    animation-iteration-count: 1;
+    animation-name: disappear;
+    animation-duration: 2000ms;
     animation-fill-mode: forwards;
-    letter-spacing: 5px;
+    animation-iteration-count: 1;
 }
 
 @keyframes disappear{
@@ -82,6 +82,10 @@ button:hover{
         display: none;
         opacity: 0;
     }
+}
+
+.losingMessage{
+    animation: color-change 3s infinite;
 }
 
 @media only screen and (max-width: 545px) {
