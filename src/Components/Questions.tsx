@@ -103,8 +103,9 @@ function Questions() {
             setShowTryAgain(false);
             setShowYouLose(false);
             setShowCorrect(false);
-            setShowYouWin(true)
-
+            setShowYouWin(true);
+            window.clearInterval(time.current);
+            setShowRefreshButton(true);
         } else {
             setShowYouWin(false);
             setShowYouLose(false);
