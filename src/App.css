@@ -62,7 +62,7 @@ button:hover {
 
 .tryAgainMessage {
     animation: color-change 1s infinite;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.3px;
     -webkit-text-stroke-color: black;
     letter-spacing: 2px;
 }
@@ -81,7 +81,7 @@ button:hover {
 
 .correctMessage {
     animation: color-correct 1s infinite;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.3px;
     -webkit-text-stroke-color: black;
     letter-spacing: 2px;
 }
@@ -100,7 +100,7 @@ button:hover {
 
 .losingMessage {
     animation: color-change 3s infinite;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.3px;
     -webkit-text-stroke-color: black;
     letter-spacing: 2px;
 }

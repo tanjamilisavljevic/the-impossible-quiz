@@ -32,6 +32,7 @@ function Questions() {
             answer: 'Ringo Starr'
         }
     ];
+
     // Question counter code; doesn't need typehinting bc the initialState is a number and the type is inferred
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const nextQuestion = currentQuestion + 1;
@@ -129,7 +130,7 @@ function Questions() {
 
 
     return (
-        <div className='content'>
+        <div className='content' onKeyDown={handleClick}>
             <p> {currentQuestion + 1}/{questions.length}:  {questions[currentQuestion].question}</p>
             <input type='text' className='answer' id='answer'/>
             <br/>
